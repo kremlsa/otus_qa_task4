@@ -37,9 +37,11 @@ public class BaseTest {
 
         //Создаём вебдрайвер через статический метод класса WebDriverFactory
         driver = WebDriverFactory.create(browserName);
+        //Устанавливаем максимальный размер окна для браузера
+        driver.manage().window().maximize();
         logger.info("Start WebDriver " + browserName.getBrowserName());
 
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @After

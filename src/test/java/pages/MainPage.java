@@ -1,7 +1,11 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage extends BasePage {
     private static final String URL = "https://otus.ru";
@@ -18,14 +22,19 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public void authorize() {
+    public MainPage auth() {
         driver.findElement(auth).click();
+        return this;
     }
 
     public void fillAuthForm(String userName, String password) {
+        (new WebDriverWait(driver, 5))
+                .until(ExpectedConditions.elementToBeClickable(submit));
         driver.findElement(login).sendKeys(userName);
         driver.findElement(pass).sendKeys(password);
         driver.findElement(submit).click();
+        (new WebDriverWait(driver, 5))
+                .until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[type='email']")));
     }
 
 }
