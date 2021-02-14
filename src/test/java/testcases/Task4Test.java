@@ -65,8 +65,8 @@ public class Task4Test extends BaseTest{
                 .auth()
                 .fillAuthForm(login, pass);
 
-        //Тест, переходим в личный кабинет, проверяем добавленные контакты
-        logger.info("Check added contacts");
+        //Тест, переходим в личный кабинет, проверяем информацию
+        logger.info("Check added information");
         cabinet.open()
             .checkContacts();
 

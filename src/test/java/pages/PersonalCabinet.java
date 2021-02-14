@@ -28,6 +28,7 @@ public class PersonalCabinet extends BasePage {
     By blogName = By.cssSelector("input[name='blog_name']");
     By company = By.cssSelector("input[name='company']");
     By work = By.cssSelector("input[name='work']");
+    By birth = By.cssSelector("input[name='date_of_birth']");
     By deleteButton = By.cssSelector(".container__col_md-0 .js-formset-delete");
     By saveButton = By.cssSelector("button[name*='continue']");
     By country = By.xpath("//*[@data-ajax-slave='/lk/biography/cv/lookup/cities/by_country/']");
@@ -57,6 +58,7 @@ public class PersonalCabinet extends BasePage {
         fields.put(blogName, user.getBlogName());
         fields.put(company, user.getCompany());
         fields.put(work, user.getWork());
+        fields.put(birth, user.getBirth());
     }
 
     //Получить экземпляр страницы
@@ -126,8 +128,27 @@ public class PersonalCabinet extends BasePage {
         waitUntilClickable(saveButton);
     }
 
-    //Тест проверяем правильность заполнения контактов
+    //Тест проверяем правильность заполнения
     public void checkContacts() {
+        //Проверяем поля
+        for (Map.Entry<By, String> entry : fields.entrySet()) {
+            Assert.assertTrue(driver.findElement(entry.getKey())
+                    .getAttribute("value")
+                    .contains(entry.getValue()));
+        }
+
+        //Проверяем выпадающие меню
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-ajax-slave='/lk/biography/cv/lookup/cities/by_country/']/label"))
+                .getText()
+                .contains(user.getCountry()));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".js-lk-cv-dependent-slave-city label div"))
+                .getText()
+                .contains(user.getCity()));
+        Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),'Уровень')]//..//..//div//div/label/div"))
+                .getText()
+                .contains(user.getEnglish()));
+
+        //Проверяем контакты
         Assert.assertTrue(driver.findElement(contact1)
                 .getAttribute("value")
                 .contains(user.getContact1()));

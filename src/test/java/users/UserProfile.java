@@ -20,6 +20,15 @@ public class UserProfile {
     String english;
     String contact1;
     String contact2;
+    String birth;
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
 
     public String getFname() {
         return fname;
