@@ -2,11 +2,15 @@ package users;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
 
 public class UserProfile {
+
+    protected static final Logger logger = LogManager.getLogger();
 
     String fname;
     String fnameLatin;
@@ -135,6 +139,7 @@ public class UserProfile {
                     .readValue(new File(fileName), UserProfile.class);
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error("Can't load user profile");
         }
         return user;
     }

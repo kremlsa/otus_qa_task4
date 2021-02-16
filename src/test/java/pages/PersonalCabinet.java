@@ -17,8 +17,9 @@ import java.util.Map;
 public class PersonalCabinet extends BasePage {
 
     private static final String URL = "https://otus.ru/lk/biography/personal/";
-    private Map<By, String> fields = new HashMap<>();
-    private UserProfile user = new UserProfile().loadFromJson("users.json");
+    private final Map<By, String> fields = new HashMap<>();
+    private final UserProfile user = UserProfile.loadFromJson("users.json");
+
 
     //selectors
     By fname = By.cssSelector("input[name='fname']");

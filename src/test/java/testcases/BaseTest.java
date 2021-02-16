@@ -20,6 +20,8 @@ public class BaseTest {
     protected static WebDriver driver;
     protected final Logger logger = LogManager.getLogger();
 
+
+
     @Before
     public void Setup() {
 
