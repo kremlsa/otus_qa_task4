@@ -84,6 +84,11 @@ public class PersonalCabinet extends BasePage {
 
         //Сохраняем
         waitUntilClickable(saveButton);
+
+        //Ждём сообщения, что данные добавлены
+        WebElement success = driver.findElement(By.cssSelector("span .success"));
+        (new WebDriverWait(driver, 5))
+                .until(ExpectedConditions.visibilityOf(success));
     }
 
     //Тесты иногда глючат, боремся с - element click intercepted:
@@ -127,6 +132,11 @@ public class PersonalCabinet extends BasePage {
 
         //Сохраняем
         waitUntilClickable(saveButton);
+
+        //Ждём сообщения, что данные добавлены
+        WebElement success = driver.findElement(By.cssSelector("span .success"));
+        (new WebDriverWait(driver, 5))
+                .until(ExpectedConditions.visibilityOf(success));
     }
 
     //Тест проверяем правильность заполнения
