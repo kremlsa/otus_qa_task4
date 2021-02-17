@@ -108,6 +108,13 @@ public class PersonalCabinet extends BasePage {
         //Выбираем страну
         waitUntilClickable(country);
         waitUntilClickable(By.cssSelector("button[title='" + user.getCountry() + "']"));
+        
+        //Баг, не получается победить без sleep
+        try {
+            Thread.sleep(500);
+        } catch (Exception e) {
+
+        }
 
         //Выбираем уровень знания английского
         waitUntilClickable(language);
