@@ -109,14 +109,13 @@ public class PersonalCabinet extends BasePage {
         waitUntilClickable(country);
         waitUntilClickable(By.cssSelector("button[title='" + user.getCountry() + "']"));
 
-        //Выбираем город
-        waitUntilClickable(city);
-        waitUntilClickable(By.cssSelector("button[title='" + user.getCity() + "']"));
-
         //Выбираем уровень знания английского
         waitUntilClickable(language);
         waitUntilClickable(By.cssSelector("button[title*='" + user.getEnglish() + "']"));
 
+        //Выбираем город
+        waitUntilClickable(city);
+        waitUntilClickable(By.cssSelector("button[title='" + user.getCity() + "']"));
 
         //Добавляем первый контакт
         driver.findElement(contact1).sendKeys(user.getContact1());
